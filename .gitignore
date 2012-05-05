@@ -1,3 +1,9 @@
 #defaults
 *.pyc
 *.pyo
+
+#project
+_statics
+dev_data.json
+dispatcher.fcgi
+prod_settings.py
