@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# DAVID THENON <sveetch@gmail.com>, 2012.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: sveetch@gmail.com\n"
+"POT-Creation-Date: 2012-05-04 23:28+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: DAVID THENON <sveetch@gmail.com>\n"
+"Language-Team: FRENCH <FR@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: settings.py:147
+msgid "Home page with automatic app list"
+msgstr "Pour la page d'accueil avec liste automatique des applications"
+
+#: templates/404.html:5 templates/404.html.py:13
+msgid "Error 404"
+msgstr "Erreur 404"
+
+#: templates/404.html:5 templates/404.html.py:13
+msgid "Not found"
+msgstr "Non trouvé"
+
+#: templates/404.html:14
+msgid "The ressource you tried to reach does not exists"
+msgstr "La ressource auquel vous essayez d'accéder n'existe pas"
+
+#: templates/500.html:5 templates/500.html.py:13
+msgid "Error 500"
+msgstr "Erreur 500"
+
+#: templates/500.html:5 templates/500.html.py:13
+msgid "Internal Server Error"
+msgstr "Erreur interne du serveur"
+
+#: templates/500.html:14
+msgid "The server encountered an internal server error or misconfiguration and was unable to complete your request."
+msgstr "Le serveur a rencontré une erreur interne ou une mauvais configuration et a été dans l'incapacité de répondre à votre requête."
+
+#: templates/base.html:60
+msgid "Menu"
+msgstr "Menu"
+
+#: templates/base.html:63
+#, python-format
+msgid "Connected as <strong><ins>%(username)s</ins></strong>"
+msgstr "Connecté en tant que <strong><ins>%(username)s</ins></strong>"
+
+#: templates/base.html:64
+msgid "Logout"
+msgstr "Déconnection"
+
+#: templates/base.html:66
+msgid "Login"
+msgstr "Connection"
+
+#: templates/base.html:67
+msgid "Register"
+msgstr "Inscription"
+
+#: templates/base.html:69
+msgid "Django admin"
+msgstr "Administration Django"
+
+#: templates/base.html:70
+msgid "Document management"
+msgstr "Gestion des documents"
+
+#: templates/base.html:79
+msgid "Thenon David © 2012 All rights reserved"
+msgstr "Thenon David © 2012 Tout droits réservés"
+
+#: templates/sveedocuments/page_details/homepage_with_flat_menu.html:9
+msgid "App documentations"
+msgstr "Documentation des applications"

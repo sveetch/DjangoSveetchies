@@ -1,0 +1,237 @@
+/*
+* Thème CSS du site Sveetchies
+* Créé par David THENON en Février 2012
+*/
+body {
+    margin: 0;
+    padding:0;
+    background-image:url('../images/random_grey_variations.png');
+    background-position:top left;
+}
+
+/* Entête */
+#header{
+    margin:0;
+    padding:1em;
+    background-position:bottom left;
+    background-image:url('../images/px_by_Gre3g.png');
+    box-shadow: 0px 1px 4px #808080;
+}
+#header h1{
+    margin:0;
+    padding:0;
+}
+#header h1 a{
+    margin:0;
+    display:block;
+    width:392px;
+    height:48px;
+    text-indent:-10000px;
+    background-color: transparent;
+    background-image:url('../images/logo_title.png');
+    background-repeat:no-repeat;
+    background-position:center left;
+    cursor: pointer;
+}
+
+/* Chemin d'accès */
+#breadcrumbs{
+    margin: 0.5em 0 0 0;
+    padding: 0 1em 1em 20px;
+    font-size:0.7em;
+    color:#303030;
+    background-image:url('../images/sitemap.png');
+    background-position:left top;
+    background-repeat:no-repeat;
+}
+#breadcrumbs a{
+    color:#303030;
+}
+
+/* Menu d'administrations */
+#account-menu{
+    margin-top:0;
+    position:absolute;
+    top:0;
+    right:1em;
+    font-size:0.8em;
+}
+#account-menu h2{
+    display:none;
+}
+#account-menu li{
+    margin-top:0;
+    border:1px solid #000000;
+    border-top:0;
+    border-radius: 0 0 4px 4px;
+}
+#account-menu li a{
+    padding:.2em .7em .2em .7em;
+    margin-top:0;
+    display:block;
+    color:#ffffff;
+    background-color:#303030;
+    border:2px solid #ffffff;
+    border-top:0;
+    text-transform:uppercase;
+    text-decoration:none;
+    border-radius: 0 0 4px 4px;
+}
+#account-menu li a:hover{
+    padding:.5em .7em .5em .7em;
+    color:#0072ff;
+}
+#account-menu li.active a{
+    padding:.5em .7em .5em .7em;
+    color:#ff0000;
+}
+
+#account-menu li.simple-text{
+    padding:.3em 1em .3em 1em;
+    color:#ffffff;
+    margin-top:0;
+    display:block;
+    border:0;
+}
+
+/* Corps du contenu */
+#root{
+    background-color:#EEEEEE;
+    min-height:700px;
+}
+#body_content{
+    margin:0;
+    padding:.7em 1% 2em 1%;
+    font-size:1.2em;
+}
+/* Ajustements pour appliquer un layout de type largeur fixe */
+.fixed_width .width-ajuster{
+    margin:auto;
+}
+.fixed_width.absolute_width .width-ajuster{
+    width:900px;
+}
+.fixed_width.relative_width .width-ajuster{
+    width:80%;
+}
+
+/* Ajustements pour un layout à deux colonnes verticales */
+.columned.cols-by-two #body_content{
+    margin:0;
+    padding:0;
+}
+.columned.cols-by-two #body_content .wrap{
+    width:80%;
+    float:right;
+}
+.columned.cols-by-two #body_content .wrap .wrapped-content{
+    padding: .5em 1.5% 1em 1.5%;
+    background-color:#ffffff;
+    border-left:1px solid #808080;
+    border-bottom:1px solid #808080;
+}
+
+/* Fix sur le menu admin en layout fixe */
+.fixed_width.relative_width #account-menu{
+    right:12%;
+}
+.fixed_width.relative_width #account-menu .width-ajuster,
+.fixed_width.absolute_width #account-menu .width-ajuster{
+    width:100%;
+}
+
+/* Ajustements pour deux colonnes verticales dans un layout fixe */
+.fixed_width.columned.cols-by-two #body_content .wrap .wrapped-content{
+    padding: .5em 1em 1em 1em;
+    border-right:1px solid #808080;
+}
+
+/* Colorisation des titres */
+h2{
+    margin:.5em 0 .5em 0;
+    padding:0;
+    font-weight:bold;
+    color:#ffb31a;
+    text-shadow:#df930a 1px 1px 2px;
+}
+h2 a, h2 a:link, h2 a:hover, h2 a:visited{
+    color:#ffb31a;
+}
+h2:first-child{
+    margin-top:0;
+}
+h2.root_page{
+    display:none;
+}
+h3, .restructuredtext_container h3 a{
+    color:#87AD0C;
+    text-shadow:#87AD0C 1px 1px 1px;
+}
+h4, .restructuredtext_container h4 a{
+    color:#1d7567;
+    text-shadow:#1d7567 1px 1px 1px;
+}
+h5, .restructuredtext_container h5 a{
+    color:#1d7567;
+}
+
+/* Menu contextuel d'une page */
+.columned.cols-by-two #context-menu{
+    width:20%;
+    float:left;
+}
+#context-menu .brick{
+    margin:.5em 4% .5em 4%;
+    padding:0 1% 1em 1%;
+    color:#505050;
+    overflow: hidden;
+}
+#context-menu .brick + .brick{
+    padding-top:1em;
+    border-top:3px solid #808080;
+}
+#context-menu h2{
+    display:block;
+    margin:.5em 0 .5em 0;
+    padding:0;
+    font-weight:bold;
+    font-size:1.2em;
+    color:#505050;
+    text-shadow:#B0B0B0 1px 1px 1px;
+}
+#context-menu .brick ul{
+    margin:.3em .5em 0 .5em;
+    padding:0 0 0 1em;
+    font-size:.9em;
+}
+#context-menu .brick li{
+    list-style-type:square;
+    padding: .15em;
+}
+#context-menu .brick li + li{
+    padding-top: .3em;
+}
+#context-menu .brick a{
+    font-weight:bold;
+    white-space: pre;
+    text-decoration:none;
+}
+#context-menu .brick a:hover{
+    color:#ff811a;
+    position: relative;
+    border:1px solid #a0a0a0;
+    background-color: #f0f0f0;
+    padding: .15em;
+    border-radius: 3px;
+}
+
+/* Pied de page */
+#footer{
+    margin:0;
+    padding:1em 1em .5em 1em;
+    color:#ffffff;
+    text-shadow:#c0c0c0 0 0 1px;
+    font-weight:bold;
+    text-align:center;
+    box-shadow: 0px -2px 2px #808080;
+}

@@ -1,0 +1,171 @@
+/*
+* Feuille de styles de base pour tout les éléments
+* Créé par David THENON en Novembre 2011
+* Inspiré directement d'un article de "AlsaCreations"
+*/
+/* Page */
+html {
+    font-size: 100%; /* Évite un bug d'IE 6-7. */
+}
+body {
+    margin: 0;
+    padding:0 1em 1em 1em;
+    font-family:Arial, sans-serif;
+    font-size: .95em; /* À adapter pour la police choisie. */
+    line-height: 1.4; /* À adapter au design. */
+    background: #ffffff;
+}
+
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+    margin: 1em 0 .5em 0; /* Rapproche le titre du texte. */
+    line-height: 1.2;
+    font-weight: bold; /* Valeur par défaut. */
+    font-style: normal;
+}
+h1 {
+    font-size: 2.80em;
+}
+h2 {
+    font-size:2em;
+}
+h3 {
+    font-size: 1.70em;
+}
+h4 {
+    font-size: 1.40em;
+}
+h5 {
+    font-size: 1.10em;
+}
+h6 {
+    font-size: 1em;
+}
+
+/* Listes */
+ul, ol {
+    margin: .75em 0 .75em .75em;
+    padding: 0;
+}
+
+/* Paragraphes */
+p {
+    margin:0; /* Marges plus faibles que par défaut. */
+    padding: .5em 0; /* Marges plus faibles que par défaut. */
+}
+address {
+    margin: .75em 0;
+    font-style: normal;
+}
+
+/* Liens */
+a, a:link, a:visited,
+a:hover, a:focus, a:active{
+    color:#0072ff;
+    text-decoration: underline;
+}
+
+/* Pas de bordure autour des images dans les liens */
+a img {
+    border: none;
+}
+
+/* Divers éléments de type en-ligne */
+em {
+    font-style: italic;
+}
+strong {
+    font-weight: bold;
+}
+
+/* Formulaires */
+form, fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+input, button, select {
+    vertical-align: middle; /* Solution pb. d'alignement vertical */
+}
+input, select, textarea{
+    font-family:Arial, sans-serif;
+}
+
+/* Met en évidence les abréviations (ayant un attribut title) */
+abbr[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+/* Met en évidence les citations */
+blockquote {
+    margin: .75em;
+    padding: 0 0 0 10px;
+    border-left: solid 2px #ddd;
+}
+q, cite {
+    font-style: italic;
+}
+q cite, q q {
+    font-style: normal
+}
+pre {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+/* Supprime les guillemets automatiques (citations courtes) */
+q {
+    quotes: none;
+}
+q:before, q:after {
+    content: ""; /* Nécessaire pour Safari/Chrome */
+}
+
+/* Rapproche les paragraphes dans les listes et citations */
+blockquote p, li p {
+    margin: .5em 0;
+}
+
+/* Styles de base pour les listes de définition */
+dl {
+    margin: .75em 0;
+}
+dt {
+    margin: .75em 0 0 0;
+    font-weight: bold;
+}
+dd {
+    margin: .25em 0 .25em 32px;
+}
+
+/* Mise en forme simple pour les tableaux */
+table {
+    width:100%;
+    margin: 0;
+    font-size:1.1em;
+    border:0;
+    border-collapse: collapse; /* Valeur par défaut: "separate". */
+    border-spacing: 0;
+}
+table td, table th {
+    padding: .9em; /* Pas de retrait autour du texte = "0". */
+    border:0;
+    font-size:.9em;
+    text-align:left;
+    vertical-align: top; /* Valeur par défaut: "middle" */
+}
+table thead th{
+    padding: .8em; /* Pas de retrait autour du texte = "0". */
+    font-size:1.05em;
+}
+table ul, table ol{
+    margin:0 0 0 20px;
+}
+table li{
+    margin-bottom:.5em;
+}
+table p{
+    margin-top:0;
+    padding-top:0;
+}

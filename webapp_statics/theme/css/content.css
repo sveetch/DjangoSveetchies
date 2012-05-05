@@ -1,0 +1,280 @@
+/*
+* Styles communs pour le thème de Sveetchies
+* Créé par David THENON en Février 2012
+*/
+hr,
+.cale{
+    margin:0;
+    padding:0;
+    visibility:hidden;
+    width:0px;
+    height:0.05px;
+    font-size:0;
+    clear:both;
+}
+
+/* ________________________________________
+    Boites en évidences avec ombrage et bordures
+*/
+.topbox{
+    margin:0 .4em 2em 0;
+    border:1px solid #e0e0e0;
+    padding:.4em;
+    -moz-box-shadow: 3px 3px 5px #888888;
+    -webkit-box-shadow: 3px 3px 5px #888888;
+    box-shadow:3px 3px 5px #888888;
+    border-top-left-radius:8px;
+    border-top-right-radius:8px;
+    background-color:#ffffff;
+}
+.topbox + .topbox{
+    margin-top:2em;
+}
+.topbox h3{
+    margin:0;
+    padding:.7em .7em 1.1em .7em;
+    color:#57769b;
+    font-size: 1.40em;
+    border-bottom:2px solid #57769b;
+}
+.topbox form{
+    margin:1em;
+}
+.topbox table + h3{
+    margin-top:1em;
+    border-top:2px solid #57769b;
+}
+
+/* ________________________________________
+    Boites de notifications diverses
+*/
+.notice-box{
+    margin:0 0 .4em 0;
+    padding:.4em .4em .4em 32px;
+    background-position:.6em 1.1em;
+    background-repeat:no-repeat;
+}
+.notice-box h3{
+    margin:0;
+    padding: .5em 0;
+    font-size:inherit;
+    color:inherit;
+    border:0;
+    text-shadow:none;
+}
+
+p.notice-box{
+    margin: .5em 0;
+    padding:.5em .5em .5em 32px;
+    background-position:.6em .5em;
+    background-repeat:no-repeat;
+}
+td.notice-box{
+    margin:0;
+    padding: .9em .9em .9em 32px !important;
+    background-position:.6em .9em;
+    background-repeat:no-repeat;
+}
+
+.empty-notice{
+    font-style:italic;
+    text-align:center;
+}
+.about-notice,
+.info-notice,
+.help-notice,
+.announce-notice,
+.locked-notice,
+.sticky-notice{
+    color:#365578;
+    background-color:#ecedfa;
+}
+.about-notice{
+    background-image:url("../images/notices/about.png");
+}
+.info-notice{
+    background-image:url("../images/notices/info.png");
+}
+.help-notice{
+    background-image:url("../images/notices/help.png");
+}
+.announce-notice{
+    background-image:url("../images/notices/announce.png");
+}
+.locked-notice{
+    background-image:url("../images/notices/padlock-closed.png");
+}
+.sticky-notice{
+    background-image:url("../images/notices/sticky-note.png");
+}
+.success-notice{
+    color:#397836;
+    background-color:#f0faec;
+    background-image:url("../images/notices/check.png");
+}
+.warning-notice{
+    color:#785c36;
+    background-color:#fafaec;
+    background-image:url("../images/notices/alert.png");
+}
+.error-notice{
+    color:#783638;
+    background-color:#faecec;
+    background-image:url("../images/notices/no.png");
+}
+
+/* Apps list on homepage */
+#apps{
+    margin:0;
+    padding:0;
+}
+#apps ul{
+    margin:0;
+    padding:1px;
+    background-color:#f0f0f0;
+    border:1px solid #a0a0a0;
+    box-shadow: 0px 0px 3px #a0a0a0;
+    border-radius: 3px;
+}
+#apps li{
+    margin:0;
+    padding:0;
+    list-style-type:none;
+}
+#apps li + li{
+    border-top:1px solid #a0a0a0;
+}
+#apps li a{
+    display: block;
+    margin: 0;
+    padding: .5em .8em .5em 32px;
+    font-size: .9em;
+    color:#303030;
+    font-weight: bold;
+    text-decoration: none;
+    list-style-type: none;
+    background-image: url('../images/book.png');
+    background-repeat: no-repeat;
+    background-position: 7px center;
+}
+#apps li a:hover{
+    color:#0072ff;
+    background-color:#ffffff;
+}
+
+/* Liste à puces mises à "plat" pour en faire un menu horizontal */
+.flat_bulletlist{
+    margin:0;
+    padding:0;
+}
+.flat_bulletlist li{
+    margin:.3em;
+    padding:0;
+    float:left;
+    list-style-type:none;
+}
+.flat_bulletlist li a{
+    display:block;
+    margin:0;
+    padding:.5em;
+}
+
+/* Menu d'actions contextuels à la page/document */
+.document_action_menu{
+    float:right;
+    position:relative;
+    top:-0.5em;
+}
+.document_action_menu h2{
+    display:none;
+}
+.document_action_menu li{
+    padding:0;
+    font-size:0.7em;
+    border-bottom:1px solid #aaaaaa;
+    border-right:1px solid #aaaaaa;
+    border-radius: 5px 5px 5px 5px;
+}
+.document_action_menu li a{
+    text-transform:uppercase;
+    text-decoration:none;
+    border:1px solid #c0c0c0;
+    border-radius: 5px 5px 5px 5px;
+    background-color:#ffffff;
+}
+
+/* Ajustements sur les formulaires */
+#body_content .uniForm fieldset {
+    border-radius: 3px 3px 3px 3px;
+    background-image:url('../images/brushed_alu.png');
+    -moz-box-shadow: 3px 3px 5px #888888;
+    -webkit-box-shadow: 3px 3px 5px #888888;
+    box-shadow:2px 2px 4px #888888;
+    display:block;
+}
+#body_content .uniForm fieldset legend {
+    margin-top:-1.15em;
+    font-size: 1.40em;
+    position:absolute;
+    color:#1d7567;
+    text-shadow:#4dB5A7 1px 1px 1px;
+}
+
+/* Ajustements sur CodeMirror */
+.SuperCodeMirror,
+.pygmentstable,
+.pygments{
+    text-shadow:none;
+}
+
+/* Ajustements sur l'interface admin de documents */
+.module{
+    text-shadow:none;
+}
+.module.changelist{
+    -moz-box-shadow: 3px 3px 5px #888888;
+    -webkit-box-shadow: 3px 3px 5px #888888;
+    box-shadow:2px 2px 4px #888888;
+}
+ul.list-tree .container{
+    background-image:url('../../theme/images/brushed_alu.png');
+    border-radius: 4px 4px 4px 4px;
+}
+ul.list-tree li .container:hover,
+ul.list-tree li .container.hover_highlight{
+    background-image:none;
+}
+ul.list-tree .menu{
+    border-radius: 0 4px 4px 0;
+}
+
+/* Ajustements pour les contenus ReST */
+.restructuredtext_container .attention,
+.restructuredtext_container .caution,
+.restructuredtext_container .danger,
+.restructuredtext_container .error,
+.restructuredtext_container .hint,
+.restructuredtext_container .important,
+.restructuredtext_container .note,
+.restructuredtext_container .tip,
+.restructuredtext_container .warning{
+    border-radius: 5px 5px 5px 5px;
+}
+.restructuredtext_container .topic{
+    border: 1px solid #cdd9f7 !important;
+    background-color: #ffffff !important;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.uniForm.tiny{
+    border: 0 none;
+    margin: auto;
+    width: 600px;
+}
+/* Champ de Captcha */
+.uniForm img.captcha{
+    border:1px dotted #e2e3ea;
+}
+.uniForm .captchatextinput{
+   margin-top: -0.4em;
+}

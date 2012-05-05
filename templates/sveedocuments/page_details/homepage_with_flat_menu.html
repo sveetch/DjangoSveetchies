@@ -1,0 +1,12 @@
+{% extends "sveedocuments/page_details/subbase_single_column.html" %}
+{% load i18n documents_utils %}
+
+{% block body_attr %} class="fixed_width absolute_width"{% endblock %}
+
+{% block content %}{{ block.super }}
+
+<div id="apps">
+    <h3>{% trans "App documentations" %}</h3>
+    {% document_page_flat_children page_instance %}
+</div>
+{% endblock %}
