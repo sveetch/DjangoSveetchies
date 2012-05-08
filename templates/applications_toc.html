@@ -1,0 +1,15 @@
+{% load i18n %}<ul>
+    {% for app in application_toc %}
+        <li>
+            <h4>{{ app.title }}</h4>
+            <p class="desc">{{ app.desc }}</p>
+            <ul class="links flat_bulletlist">
+                <li class="doc"><a href="{{ app.doc_link }}">{% trans "Documentation" %}</a></li>
+                {% if app.demo_link %}<li class="demo"><a href="{{ app.demo_link }}">{% trans "Demonstration" %}</a></li>{% endif %}
+                {% if app.github_link %}<li class="github"><a href="{{ app.github_link }}">{% trans "Github repository" %}</a></li>{% endif %}
+                {% if app.download_link %}<li class="download"><a href="{{ app.download_link }}">{% trans "Download" %}</a></li>{% endif %}
+            </ul>
+            <div class="cale"></div>
+        </li>
+    {% endfor %}
+</ul>

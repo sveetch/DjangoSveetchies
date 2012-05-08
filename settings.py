@@ -54,6 +54,30 @@ SITE_ID = 1
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '$emzo7-p1^j-$s^zqo797e1-_@*hf6qxjz@93*iwr30((_ok3='
 
+# Available cache backends
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'sveetchies-demo',
+        'TIMEOUT': 60,
+        'KEY_PREFIX': 'dev',
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000
+        }
+    }
+}
+
+# Apps to display on homepage with their datas
+PUBLISHED_APPS = (
+    #(KEYNAME[, TITLE[, DESC[, KWARGS]]])
+    ('autobreadcrumbs', None, None, {'github':True, 'pypi':True}),
+    ('sveeaccounts', None, None, {'github':True, 'pypi':True}),
+    ('djangocodemirror', None, None, {'github':True, 'pypi':True, 'demo_link': ('djangocodemirror-sample-view', [])}),
+    ('sveedocuments', None, None, {'github':True, 'pypi':True}),
+    ('djangotribune', None, None, {'github':True, 'pypi':True}),
+    ('DjangoSveetchies', None, None, {'github':True, 'doc_link': ('documents-page-details', ['djangosveetchies'])}),
+)
+
 #####
 #
 #   2. Optionnal
@@ -109,7 +133,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -118,19 +142,6 @@ USE_I18N = True
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
 USE_L10N = True
-
-# Available cache backends
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'sveetchies-demo',
-        'TIMEOUT': 60,
-        'KEY_PREFIX': 'dev',
-        'OPTIONS': {
-            'MAX_ENTRIES': 1000
-        }
-    }
-}
 
 # Default URL to redirect to just after successful login
 LOGIN_REDIRECT_URL = "/"
@@ -142,10 +153,11 @@ ACCOUNT_ACTIVATION_DAYS = 3
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
 # Add some addtional templates
-# TODO: Usage of ugettext_lazy in settings should prohibited
+# NOTE: Usage of ugettext_lazy in settings should prohibited
 DOCUMENTS_PAGE_TEMPLATES = {
     'homepage': ('sveedocuments/page_details/homepage_with_flat_menu.html', ugettext_lazy('Home page with automatic app list')),
 }
+DOCUMENTS_CACHE_KEYS_TO_CLEAN = ["applications_toc_on_homepage"]
 
 DJANGOCODEMIRROR_USER_SETTINGS_COOKIE_NAME = "djangocodemirror_user_settings"
 # Additional Django-CodeMirror settings for sveedocuments
