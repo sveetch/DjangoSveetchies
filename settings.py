@@ -74,7 +74,7 @@ PUBLISHED_APPS = (
     ('sveeaccounts', None, None, {'github':True, 'pypi':True}),
     ('djangocodemirror', None, None, {'github':True, 'pypi':True, 'demo_link': ('djangocodemirror-sample-view', [])}),
     ('sveedocuments', None, None, {'github':True, 'pypi':True}),
-    ('djangotribune', None, None, {'github':True, 'pypi':True}),
+    ('djangotribune', None, None, {'github':True, 'pypi':True, 'demo_link': ('tribune-board', [])}),
     ('DjangoSveetchies', None, None, {'github':True, 'doc_link': ('documents-page-details', ['djangosveetchies'])}),
 )
 
@@ -129,11 +129,11 @@ TEMPLATE_DIRS = (
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Paris'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'fr'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -157,9 +157,20 @@ CRISPY_TEMPLATE_PACK = 'uni_form'
 DOCUMENTS_PAGE_TEMPLATES = {
     'homepage': ('sveedocuments/page_details/homepage_with_flat_menu.html', ugettext_lazy('Home page with automatic app list')),
 }
+# Custom cache keys to remove with clearcache command option
 DOCUMENTS_CACHE_KEYS_TO_CLEAN = ["applications_toc_on_homepage"]
 
+# Forbidden words for slug values in documents to avoid clashes in urls
+DOCUMENTS_PAGE_RESERVED_SLUGS = (
+    'add', 'admin', 'board', 'preview', 'inserts', 'documents-help', 'sitemap', # for sveedocuments
+    'djangocodemirror-sample', # for djangocodemirror sample
+    'accounts', 'captcha', # for sveeaccounts
+    'tribune', # for djangotribune
+)
+
+# Cookie name used to store and retreive user settings for editor
 DJANGOCODEMIRROR_USER_SETTINGS_COOKIE_NAME = "djangocodemirror_user_settings"
+
 # Additional Django-CodeMirror settings for sveedocuments
 CODEMIRROR_SETTINGS = {
     'sveetchies-documents-page': {
@@ -238,7 +249,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'DjangoSveetchies.urls'
@@ -246,13 +257,14 @@ ROOT_URLCONF = 'DjangoSveetchies.urls'
 INSTALLED_APPS = (
     'captcha',
     'crispy_forms',
-    'debug_toolbar',
+    #'debug_toolbar',
     'mptt',
     'registration',
     'autobreadcrumbs',
     'djangocodemirror',
     'sveeaccounts',
     'sveedocuments',
+    'djangotribune',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

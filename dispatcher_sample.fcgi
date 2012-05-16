@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
-Sample dispatcher for FastCGI
+FastCGI dispatcher for development environment
 """
 import sys, os
 

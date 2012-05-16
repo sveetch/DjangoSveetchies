@@ -26,6 +26,8 @@ urlpatterns = patterns('',
     
     (r'^djangocodemirror-sample/', include('djangocodemirror.urls')),
     
+    url(r'^tribune/', include('djangotribune.urls')),
+    
     url(r'^documents-help/$', HelpPage.as_view(), name='documents-help'),
     url(r'^sitemap/$', PageIndex.as_view(), name='documents-index'),
     url(r'^(?P<slug>[-\w]+)/$', PageDetails.as_view(), name='documents-page-details'),
