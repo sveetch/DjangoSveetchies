@@ -78,6 +78,10 @@ PUBLISHED_APPS = (
     ('DjangoSveetchies', None, None, {'github':True, 'doc_link': ('documents-page-details', ['djangosveetchies'])}),
 )
 
+# The docutils writer to use, can be html4 or html5, html5 writer is internal code of 
+# sveedocuments
+DOCUMENTS_PARSER_WRITER = "html4"
+
 #####
 #
 #   2. Optionnal
@@ -184,6 +188,7 @@ CODEMIRROR_SETTINGS = {
         'search_enabled': True,
         'settings_cookie': DJANGOCODEMIRROR_USER_SETTINGS_COOKIE_NAME,
         'help_link': ('documents-help',),
+        'settings_url': ('documents-editor-settings', [], {}),
     },
     'sveetchies-documents-insert': {
         'mode': 'rst',
@@ -196,6 +201,7 @@ CODEMIRROR_SETTINGS = {
         'search_enabled': True,
         'settings_cookie': DJANGOCODEMIRROR_USER_SETTINGS_COOKIE_NAME,
         'help_link': ('documents-help',),
+        'settings_url': ('documents-editor-settings', [], {}),
     },
 }
 

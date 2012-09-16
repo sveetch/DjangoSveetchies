@@ -311,3 +311,14 @@ ul.list-tree .menu{
 .uniForm .captchatextinput{
    margin-top: -0.4em;
 }
+
+/* Ajustements sur le formulaire des settings */
+#body_content .DjangoCodeMirror_settings_panel .uniForm fieldset,
+#DjangoCodeMirror_fullscreen_scene .DjangoCodeMirror_settings_panel .uniForm fieldset {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background-image: none;
+    box-shadow:none;
+    font-size:12px;
+}
