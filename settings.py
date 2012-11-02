@@ -72,15 +72,16 @@ PUBLISHED_APPS = (
     #(KEYNAME[, TITLE[, DESC[, KWARGS]]])
     ('autobreadcrumbs', None, None, {'github':True, 'pypi':True}),
     ('sveeaccounts', None, None, {'github':True, 'pypi':True}),
-    ('djangocodemirror', None, None, {'github':True, 'pypi':True, 'demo_link': ('djangocodemirror-sample-view', [])}),
+    ('rstview', None, None, {'github':True, 'pypi':True}),
     ('sveedocuments', None, None, {'github':True, 'pypi':True}),
+    ('djangocodemirror', None, None, {'github':True, 'pypi':True, 'demo_link': ('djangocodemirror-sample-view', [])}),
     ('djangotribune', None, None, {'github':True, 'pypi':True, 'demo_link': ('tribune-board', [])}),
     ('DjangoSveetchies', None, None, {'github':True, 'doc_link': ('documents-page-details', ['djangosveetchies'])}),
 )
 
 # The docutils writer to use, can be html4 or html5, html5 writer is internal code of 
 # sveedocuments
-DOCUMENTS_PARSER_WRITER = "html4"
+RSTVIEW_PARSER_WRITER = "html4"
 
 #####
 #
@@ -266,6 +267,7 @@ INSTALLED_APPS = (
     #'debug_toolbar',
     'mptt',
     'registration',
+    'rstview',
     'autobreadcrumbs',
     'djangocodemirror',
     'sveeaccounts',
