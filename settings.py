@@ -81,7 +81,7 @@ PUBLISHED_APPS = (
 
 # The docutils writer to use, can be html4 or html5, html5 writer is internal code of 
 # sveedocuments
-RSTVIEW_PARSER_WRITER = "html4"
+RSTVIEW_PARSER_WRITER = "html5"
 
 #####
 #
@@ -256,7 +256,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    #'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'DjangoSveetchies.urls'
@@ -264,7 +264,7 @@ ROOT_URLCONF = 'DjangoSveetchies.urls'
 INSTALLED_APPS = (
     'captcha',
     'crispy_forms',
-    #'debug_toolbar',
+    'debug_toolbar',
     'mptt',
     'registration',
     'rstview',

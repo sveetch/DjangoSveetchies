@@ -1,84 +1,98 @@
-{% load i18n autobreadcrumb documents_utils %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    {% spaceless %}<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+{% load i18n autobreadcrumb documents_utils %}<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>{% spaceless %}
+    <meta charset="utf-8">
     <title>{% block head_title %}{{ SITE.name }}{% endblock %}</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
-    <link rel="Stylesheet" title="Normal" media="screen" type="text/css" href="{{ STATIC_URL }}theme/css/base.css"/>
-    <link rel="Stylesheet" title="Normal" media="screen" type="text/css" href="{{ STATIC_URL }}theme/css/screen.css"/>
-    <link rel="Stylesheet" title="Normal" media="screen" type="text/css" href="{{ STATIC_URL }}theme/css/content.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blah blah">
+    <meta name="author" content="Moi">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico">
+    
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/screen{% if not debug %}.min{% endif %}.css">
     {% block head_more_links %}{% endblock %}
-
     {% block head_base_js %}
-    <script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}jquery/plugins/equalizeCols.js"></script>
-    <script language="JavaScript" type="text/javascript">
-    //<![CDATA[
-    function equalize_layout_cols() {
-        $("#body_content, #menu_content .sub-layer").equalizeCols();
-    };
-    $(window).bind('resize', function(event){
-        equalize_layout_cols();
-    });
-    $(document).ready(function(){
-        equalize_layout_cols();
-    });
-    //]]>
-    </script>
-    {% endblock %}{% block head_more_js %}
-{% endblock %}{% endspaceless %}</head>
+    <script src="{{ STATIC_URL }}js/foundation/modernizr.foundation.js"></script>
+    {% endblock %}
+    {% endspaceless %}
+</head>
 
-<body{% block body_attr %}{% endblock %}>
-
-    <div id="root">
-        <div id="header">
-            <div class="width-ajuster">
-                <h1><a href="{{ SITE.web_url }}" title="{{ SITE.name }}"><span>{{ SITE.name }}</span></a></h1>
-            </div>
-        </div>
-        
-        {% block body_content %}<div id="body_content">
-            <div class="width-ajuster">
-                <div class="wrap">
-                    <div class="wrapped-content">
-                        {% block breadcrumbsroot %}<p id="breadcrumbs">{% block breadcrumbs %}{% autobreadcrumbs_links %}{% endblock %}</p>{% endblock %}
-                        {% block action_menu %}{% endblock %}
-                        <div class="cale"></div>
-                        
-                        {% block content %}{% endblock %}
-                    </div>
-                </div>
-            
-                {% block context_menu %}{% endblock %}
-                <div class="cale"></div>
-            </div>
-        </div>{% endblock %}
+<body id="{% block body_id %}{% endblock %}">
+    {% spaceless %}<nav id="header" class="top-bar">
+        <ul>
+            <li class="name"><h1><a href="/" title="{{ SITE.name }}">{{ SITE.name }}</a></h1></li>
+            <li class="toggle-topbar"><a href="#"></a></li>
+        </ul>
+        <section>
+            {% comment %}<ul class="left" id="site-menu"></ul>{% endcomment %}
+            <ul class="left" id="site-menu">
+                <li><a href="">Documents</a></li>
+            </ul>
+            <ul class="right" id="user-menu">
+                <li class="divider show-for-medium-and-up"></li>
+                {% if user.is_authenticated %}
+                    <li class="has-dropdown">
+                        <a href="#">{% blocktrans with username=user.username %}Connected as <strong>{{ username }}</strong>{% endblocktrans %}</a>
+                        <ul class="dropdown">
+                            {% if user.is_staff %}
+                                <li><a href="{% url admin:index %}">{% trans "Django admin" %}</a></li>
+                                <li{% currentwalkthroughto 'documents-board' %} class="active"{% endcurrentwalkthroughto %}><a href="{% url documents-board %}">{% trans "Document management" %}</a></li>
+                                <li class="divider"></li>
+                            {% endif %}
+                            <li><a href="{% url auth_logout %}">{% trans "Logout" %}</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="has-dropdown">
+                        <a href="{% url auth_login %}">{% trans "Login" %}</a>
+                        <ul class="dropdown">
+                            <li><a href="{% url registration_register %}">{% trans "Register" %}</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+            </ul>
+        </section>
+    </nav>{% endspaceless %}
     
+    {% block body_content %}<div id="body_content">
+        {% block breadcrumbsroot %}<ul class="breadcrumbs">{% block breadcrumbs %}{% autobreadcrumbs_links %}{% endblock %}</ul>{% endblock %}
         
-        <div id="account-menu">
-            <div class="width-ajuster">
-                <h2>{% trans "Menu" %}</h2>
-                <ul class="flat_bulletlist">
-                    {% if user.is_authenticated %}
-                        <li class="simple-text">{% blocktrans with username=user.username %}Connected as <strong><ins>{{ username }}</ins></strong>{% endblocktrans %}</li>
-                        <li><a href="{% url auth_logout %}">{% trans "Logout" %}</a></li>
-                    {% else %}
-                        <li><a href="{% url auth_login %}">{% trans "Login" %}</a></li>
-                        <li><a href="{% url registration_register %}">{% trans "Register" %}</a></li>
-                    {% endif %}
-                    {% if user.is_staff %}<li><a href="{% url admin:index %}">{% trans "Django admin" %}</a></li>
-                    <li{% currentwalkthroughto 'documents-board' %} class="active"{% endcurrentwalkthroughto %}><a href="{% url documents-board %}">{% trans "Document management" %}</a></li>{% endif %}
-                </ul>
-                <div class="cale"></div>
-            </div>
-        </div>
-    </div>
+        {% comment %}{% block context_menu %}{% endblock %}{% endcomment %}
+        {% block content %}{% endblock %}
+    </div>{% endblock %}
     
-    <div id="footer">
-        <div class="width-ajuster">
-            <p>{% blocktrans %}Thenon David © 2012 All rights reserved{% endblocktrans %}</p>
+    {% spaceless %}
+    <footer id="footer">
+        <div class="row row-fluid">
+            <p class="credits">{% blocktrans %}Thenon David © 2012 All rights reserved{% endblocktrans %}</p>
         </div>
-    </div>
-
+    </footer>
+    {% endspaceless %}
+    
+    {% spaceless %}{% block foot_base_js %}{% comment %}{% if not debug %}<script src="{{ STATIC_URL }}js/foundation.min.js"></script>
+    {% else %}{% endcomment %}
+    <script src="{{ STATIC_URL }}js/foundation/jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.forms.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.clearing.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.magellan.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.orbit.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.navigation.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.accordion.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.topbar.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.cookie.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.joyride.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.tabs.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.buttons.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.reveal.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.event.swipe.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.alerts.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.placeholder.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.tooltips.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.mediaQueryToggle.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/jquery.event.move.js"></script>
+    <!-- Application Javascript, safe to override -->
+    <script src="{{ STATIC_URL }}js/foundation/app.js"></script>
+    {% endblock %}
+    {% block head_more_js %}{% endblock %}{% endspaceless %}
 </body>
 </html>

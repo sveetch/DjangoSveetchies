@@ -1,0 +1,101 @@
+// You custom settings file to override Foundation defaults
+@import "settings";
+
+// Comment out this import if you are customizing you imports below
+@import "foundation";
+
+// ----------------------------------------
+// Import specific parts of Foundation by commenting the import "foundation"
+// and uncommenting what you want below. You must uncomment the following if customizing
+
+// @import "compass/css3";
+// @import "foundation/settings";
+// @import "foundation/functions/all";
+
+// Control which mixins you have access too
+
+@import "foundation/mixins/clearfix";
+// @import "foundation/mixins/css-triangle";
+// @import "foundation/mixins/font-size";
+
+// Must include next two for semantic grid to work
+
+// @import "foundation/mixins/respond-to";
+// @import "foundation/mixins/semantic-grid";
+
+// @import "modular-scale";
+// @import "foundation/common/globals";
+
+// Must include the grid for any responsiveness
+
+// @import "foundation/components/grid";
+
+// Control which common styles get compiled
+
+// @import "foundation/common/typography";
+// @import "foundation/common/forms";
+
+// Control which components you get if customizing
+
+// @import "foundation/components/modules/buttons";
+// @import "foundation/components/modules/tabs";
+// @import "foundation/components/modules/ui";
+// @import "foundation/components/modules/topbar";
+// @import "foundation/components/modules/navbar";
+// @import "foundation/components/modules/orbit";
+// @import "foundation/components/modules/reveal";
+// @import "foundation/components/modules/offcanvas";
+
+@import "icons/accessibility/accessibility_foundicons";
+@import "icons/general/general_foundicons";
+@import "icons/general_enclosed/general_enclosed_foundicons";
+@import "icons/social/social_foundicons";
+
+// Constantes
+/*$headerTopItemshifting: 50px;
+$headerTopPosition: 155px;
+$siteMenuItemFontSize: 15px;
+$headerLogoEmarge: 24px;
+$headerDesignByLogoHeight: 30px;*/
+
+.top-bar{
+    background-color:#000000;
+}
+
+/* Corps du contenu */
+#body_content{
+/*    padding-top: $headerTopPosition - $topBarHeight;
+    min-height:200px;*/
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.float-clearfix{
+    @include clearfix;
+}
+
+/*
+ * Row fluid block
+ */
+.row-fluid {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    @extend %clearfix;
+}
+
+.document_action_menu{}
+
+
+//Fix needed for fullwidth layout else this provokes displaying horizontal scrollbar
+.top-bar ul.right .has-dropdown .dropdown {
+    //right: -1px;
+    right: 0;
+}
+
+/* Pied de page */
+#footer{
+    color: #666666;
+    background-color: #000000;
+    text-align:center;
+}
