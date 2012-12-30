@@ -1,4 +1,4 @@
-{% load i18n autobreadcrumb documents_utils %}<!DOCTYPE html>
+{% load i18n autobreadcrumb documents_menus %}<!DOCTYPE html>
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>{% spaceless %}
@@ -17,17 +17,20 @@
     {% endspaceless %}
 </head>
 
-<body id="{% block body_id %}{% endblock %}">
+<body id="{% block body_id %}base-default{% endblock %}">
     {% spaceless %}<nav id="header" class="top-bar">
         <ul>
             <li class="name"><h1><a href="/" title="{{ SITE.name }}">{{ SITE.name }}</a></h1></li>
             <li class="toggle-topbar"><a href="#"></a></li>
         </ul>
         <section>
-            {% comment %}<ul class="left" id="site-menu"></ul>{% endcomment %}
             <ul class="left" id="site-menu">
-                <li><a href="">Documents</a></li>
+                <li class="has-dropdown">
+                    <a href="{% url documents-index %}">Documents</a>
+                    {% document_page_treemenu 0 'sveedocuments/global_docs_treemenu.html' %}
+                </li>
             </ul>
+            
             <ul class="right" id="user-menu">
                 <li class="divider show-for-medium-and-up"></li>
                 {% if user.is_authenticated %}
@@ -55,7 +58,7 @@
     </nav>{% endspaceless %}
     
     {% block body_content %}<div id="body_content">
-        {% block breadcrumbsroot %}<ul class="breadcrumbs">{% block breadcrumbs %}{% autobreadcrumbs_links %}{% endblock %}</ul>{% endblock %}
+        {% block breadcrumbsroot %}<ul class="breadcrumbs">{% block breadcrumbs %}{% autobreadcrumbs_tag %}{% endblock %}</ul>{% endblock %}
         
         {% comment %}{% block context_menu %}{% endblock %}{% endcomment %}
         {% block content %}{% endblock %}

@@ -155,7 +155,7 @@ LOGIN_REDIRECT_URL = "/"
 ACCOUNT_ACTIVATION_DAYS = 3
 
 # Default layout to use with "crispy_forms"
-CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_TEMPLATE_PACK = 'foundation'
 
 # Add some addtional templates
 # NOTE: Usage of ugettext_lazy in settings should prohibited
@@ -256,7 +256,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'DjangoSveetchies.urls'
@@ -264,7 +264,8 @@ ROOT_URLCONF = 'DjangoSveetchies.urls'
 INSTALLED_APPS = (
     'captcha',
     'crispy_forms',
-    'debug_toolbar',
+    'crispy_forms_foundation',
+    #'debug_toolbar',
     'mptt',
     'registration',
     'rstview',

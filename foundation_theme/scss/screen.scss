@@ -46,37 +46,59 @@
 // @import "foundation/components/modules/reveal";
 // @import "foundation/components/modules/offcanvas";
 
-@import "icons/accessibility/accessibility_foundicons";
-@import "icons/general/general_foundicons";
-@import "icons/general_enclosed/general_enclosed_foundicons";
-@import "icons/social/social_foundicons";
+//@import "icons/accessibility/accessibility_foundicons";
+//@import "icons/general/general_foundicons";
+//@import "icons/general_enclosed/general_enclosed_foundicons";
+//@import "icons/social/social_foundicons";
 
-// Constantes
-/*$headerTopItemshifting: 50px;
-$headerTopPosition: 155px;
-$siteMenuItemFontSize: 15px;
-$headerLogoEmarge: 24px;
-$headerDesignByLogoHeight: 30px;*/
-
-.top-bar{
-    background-color:#000000;
+// Just used to see the real values calculated by "modular-scale"
+#dummyms{
+    .cl0{
+        font-size: ms(0);
+    }
+    .cl1{
+        font-size: ms(1);
+    }
+    .cl2{
+        font-size: ms(2);
+    }
+    .cl3{
+        font-size: ms(3);
+    }
+    .cl4{
+        font-size: ms(4);
+    }
+    .cl5{
+        font-size: ms(5);
+    }
+    .cl6{
+        font-size: ms(6);
+    }
 }
 
 /* Corps du contenu */
 #body_content{
-/*    padding-top: $headerTopPosition - $topBarHeight;
-    min-height:200px;*/
     padding-left: 1%;
     padding-right: 1%;
 }
 
+//*
+// Foundation base customizing
+//*
+
+// To force clearfix on some element without needing to include the mixin in the css but 
+// directly by adding the css class to the element
 .float-clearfix{
     @include clearfix;
 }
 
-/*
- * Row fluid block
- */
+// TODO: this has to be setted in the settings
+.top-bar{
+    background-color:#000000;
+}
+
+// Row fluid block add-on, this is has to be used with "row" class, the row will adjust 
+// to the available width
 .row-fluid {
     width: 100%;
     max-width: 100%;
@@ -84,8 +106,57 @@ $headerDesignByLogoHeight: 30px;*/
     @extend %clearfix;
 }
 
-.document_action_menu{}
+// Styling the <select/> element like other <input/>
+select{
+    @extend input[type="text"];
+    box-shadow: none;
+}
 
+// TODO: Try to use modular scale than fixed size
+fieldset{ 
+    // Fieldsets need a bottom padding too !
+    padding: 12px 12px;
+    // Try to distinguish fieldset from the page background
+    background-color: #FCFCFC;
+    @include box-shadow(0 1px 2px rgba(0,0,0,0.1));
+    
+    // More readable legends and labels
+    legend, label{ 
+        font-size: 16px;
+    }
+    
+    // Much better spacing between row blocks
+    .row + .row{ 
+        margin-top: 12px;
+    }
+}
+
+// For SplitDateTimeField
+.datetimesplit{
+     .row & .row{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .dateinput{
+        float: left;
+        width: 49.5%;
+    }
+    .timeinput{
+        float: right;
+        width: 49.5%;
+        //@include clearfix;
+    }
+}
+
+// Give a little spaces between button in the button holders 
+.buttonHolder{
+    text-align:right;
+    
+    input.button + input.button,
+    button + button{
+        margin-left: ms(0) / 2;
+    }
+}
 
 //Fix needed for fullwidth layout else this provokes displaying horizontal scrollbar
 .top-bar ul.right .has-dropdown .dropdown {
@@ -93,8 +164,18 @@ $headerDesignByLogoHeight: 30px;*/
     right: 0;
 }
 
-/* Pied de page */
+//*
+// Other stuff
+//*
+table.full{
+    width: 100%;
+}
+
+//*
+// Footer
+//*
 #footer{
+    margin-top: 20px;
     color: #666666;
     background-color: #000000;
     text-align:center;
