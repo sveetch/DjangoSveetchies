@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-07 19:57-0500\n"
+"POT-Creation-Date: 2012-12-30 18:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: DAVID THENON <sveetch@gmail.com>\n"
 "Language-Team: FRENCH <FR@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: settings.py:158
+#: settings.py:163
 msgid "Home page with automatic app list"
 msgstr "Pour la page d'accueil avec liste automatique des applications"
 
@@ -61,39 +61,36 @@ msgstr "Dépôt sur Github"
 msgid "Download"
 msgstr "Téléchargement"
 
-#: templates/base.html:60
-msgid "Menu"
-msgstr "Menu"
-
-#: templates/base.html:63
+#: templates/base.html:38
 #, python-format
-msgid "Connected as <strong><ins>%(username)s</ins></strong>"
-msgstr "Connecté en tant que <strong><ins>%(username)s</ins></strong>"
+msgid "Connected as <strong>%(username)s</strong>"
+msgstr "Connecté en tant que <strong>%(username)s</strong>"
 
-#: templates/base.html:64
-msgid "Logout"
-msgstr "Déconnection"
-
-#: templates/base.html:66
-msgid "Login"
-msgstr "Connection"
-
-#: templates/base.html:67
-msgid "Register"
-msgstr "Inscription"
-
-#: templates/base.html:69
+#: templates/base.html:41
 msgid "Django admin"
 msgstr "Administration Django"
 
-#: templates/base.html:70
+#: templates/base.html:42
 msgid "Document management"
 msgstr "Gestion des documents"
 
-#: templates/base.html:79
+#: templates/base.html:45
+msgid "Logout"
+msgstr "Déconnection"
+
+#: templates/base.html:50
+msgid "Login"
+msgstr "Connection"
+
+#: templates/base.html:52
+msgid "Register"
+msgstr "Inscription"
+
+#: templates/base.html:71
 msgid "Thenon David © 2012 All rights reserved"
 msgstr "Thenon David © 2012 Tout droits réservés"
 
-#: templates/sveedocuments/page_details/homepage_with_flat_menu.html:9
+#: templates/sveedocuments/homepage_with_flat_menu.html:9
 msgid "Applications"
 msgstr "Applications"
+
