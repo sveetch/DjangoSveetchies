@@ -160,7 +160,7 @@ CRISPY_TEMPLATE_PACK = 'foundation'
 # Add some addtional templates
 # NOTE: Usage of ugettext_lazy in settings should prohibited
 DOCUMENTS_PAGE_TEMPLATES = {
-    'homepage': ('sveedocuments/page_details/homepage_with_flat_menu.html', ugettext_lazy('Home page with automatic app list')),
+    'homepage': ('sveedocuments/homepage_with_flat_menu.html', ugettext_lazy('Home page with automatic app list')),
 }
 # Custom cache keys to remove with clearcache command option
 DOCUMENTS_CACHE_KEYS_TO_CLEAN = ["applications_toc_on_homepage"]
