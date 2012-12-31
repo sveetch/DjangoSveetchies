@@ -18,6 +18,7 @@ from django.utils.translation import ugettext_lazy
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+#TEMPLATE_DEBUG = ASSETS_DEBUG = DEBUG
 CRISPY_FAIL_SILENTLY = not DEBUG
 INTERNAL_IPS = ( '192.168.0.112', )
 
@@ -119,6 +120,8 @@ STATICFILES_DIRS = (
     os.path.join(WEBAPP_ROOT, 'webapp_statics/'),
 )
 
+ASSETS_ROOT = os.path.join(WEBAPP_ROOT, 'webapp_statics/')
+
 # URL prefix for admin media -- CSS, JavaScript and images.
 ADMIN_MEDIA_PREFIX = os.path.join('/', STATIC_DIRNAME, 'admin/')
 
@@ -212,6 +215,11 @@ CODEMIRROR_SETTINGS = {
 #
 #####
 
+# Assets bundles module
+ASSETS_MODULES = (
+    'DjangoSveetchies.assets',
+)
+
 # For debug_toolbar
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
@@ -262,6 +270,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'DjangoSveetchies.urls'
 
 INSTALLED_APPS = (
+    'django_assets',
     'captcha',
     'crispy_forms',
     'crispy_forms_foundation',

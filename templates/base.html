@@ -1,4 +1,4 @@
-{% load i18n autobreadcrumb documents_menus %}<!DOCTYPE html>
+{% load i18n autobreadcrumb documents_menus assets %}<!DOCTYPE html>
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>{% spaceless %}
@@ -9,10 +9,16 @@
     <meta name="author" content="Moi">
     <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico">
     
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/screen{% if not debug %}.min{% endif %}.css">
+    {% comment %}<link rel="stylesheet" href="{{ STATIC_URL }}css/screen{% if not debug %}.min{% endif %}.css">{% endcomment %}
+    {% assets "main_css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
     {% block head_more_links %}{% endblock %}
     {% block head_base_js %}
-    <script src="{{ STATIC_URL }}js/foundation/modernizr.foundation.js"></script>
+        {% comment %}<script src="{{ STATIC_URL }}js/foundation/modernizr.foundation.js"></script>{% endcomment %}
+        {% assets "modernizr_js", "main_js" %}
+            <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
     {% endblock %}
     {% endspaceless %}
 </head>
@@ -72,30 +78,7 @@
     </footer>
     {% endspaceless %}
     
-    {% spaceless %}{% block foot_base_js %}{% comment %}{% if not debug %}<script src="{{ STATIC_URL }}js/foundation.min.js"></script>
-    {% else %}{% endcomment %}
-    <script src="{{ STATIC_URL }}js/foundation/jquery.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.forms.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.clearing.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.magellan.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.orbit.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.navigation.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.accordion.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.topbar.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.cookie.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.joyride.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.tabs.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.buttons.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.reveal.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.event.swipe.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.alerts.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.placeholder.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.tooltips.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.foundation.mediaQueryToggle.js"></script>
-    <script src="{{ STATIC_URL }}js/foundation/jquery.event.move.js"></script>
-    <!-- Application Javascript, safe to override -->
-    <script src="{{ STATIC_URL }}js/foundation/app.js"></script>
-    {% endblock %}
+    {% spaceless %}{% block foot_base_js %}{% endblock %}
     {% block head_more_js %}{% endblock %}{% endspaceless %}
 </body>
 </html>

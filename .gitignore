@@ -7,3 +7,4 @@ _statics
 dev_data.json
 dispatcher.fcgi
 prod_settings.py
+.sass-cache

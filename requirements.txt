@@ -6,3 +6,5 @@ sveeaccounts
 sveedocuments
 djangotribune
 django-debug-toolbar==0.9.4
+django-assets
+yuicompressor

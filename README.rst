@@ -32,6 +32,7 @@ This is the direct dependencies to use the project.
 * `djangocodemirror`_;
 * `Sveetchies-accounts`_;
 * `Sveetchies-documents`_;
+* django-assets;
 
 Install
 =======
