@@ -11,6 +11,7 @@
 .. _django-mptt: http://pypi.python.org/pypi/django-mptt/
 .. _django-simple-captcha: https://github.com/mbi/django-simple-captcha
 .. _django-registration: http://pypi.python.org/pypi/django-registration
+.. _django-assets: http://pypi.python.org/pypi/django-assets
 .. _Sveetchies-accounts: https://github.com/sveetch/sveeaccounts
 .. _Sveetchies-documents: http://pypi.python.org/pypi/sveedocuments
 .. _CodeMirror: http://codemirror.net/
@@ -32,7 +33,7 @@ This is the direct dependencies to use the project.
 * `djangocodemirror`_;
 * `Sveetchies-accounts`_;
 * `Sveetchies-documents`_;
-* django-assets;
+* `django-assets`_;
 
 Install
 =======
