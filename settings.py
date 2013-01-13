@@ -4,7 +4,7 @@ Django settings for DjangoSveetchies development
 
 This is the version for development environnment only. For production usage you should 
 create a new settings file like "prod_settings.py" where you import these settings and 
-overwrite the required ones like WEBAPP_ROOT, ADMINS, DATABASES, SECRET_KEY (important), 
+overwrite the required ones like PROJECT_DIR, ADMINS, DATABASES, SECRET_KEY (important), 
 EMAIL, etc..
 """
 import os
@@ -39,7 +39,7 @@ DATABASES = {
 
 # Define the webapp absolute path
 # In production this must be defined manually
-WEBAPP_ROOT = os.path.abspath(os.path.dirname(__file__))
+PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 # SMTP Settings to send Applications emails, configured for debug purpose only
 # $> python -m smtpd -n -c DebuggingServer localhost:1025
@@ -104,7 +104,7 @@ STATIC_DIRNAME = 'static'
 MEDIA_URL = '/{0}/'.format(MEDIA_DIRNAME)
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(WEBAPP_ROOT, MEDIA_DIRNAME)+"/"
+MEDIA_ROOT = os.path.join(PROJECT_DIR, MEDIA_DIRNAME)+"/"
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -113,21 +113,21 @@ STATIC_URL = '/{0}/'.format(STATIC_DIRNAME)
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(WEBAPP_ROOT, STATIC_DIRNAME)+"/"
+STATIC_ROOT = os.path.join(PROJECT_DIR, STATIC_DIRNAME)+"/"
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(WEBAPP_ROOT, 'webapp_statics/'),
+    os.path.join(PROJECT_DIR, 'webapp_statics/'),
 )
 
-ASSETS_ROOT = os.path.join(WEBAPP_ROOT, 'webapp_statics/')
+ASSETS_ROOT = os.path.join(PROJECT_DIR, 'webapp_statics/')
 
 # URL prefix for admin media -- CSS, JavaScript and images.
 ADMIN_MEDIA_PREFIX = os.path.join('/', STATIC_DIRNAME, 'admin/')
 
 # Absolute paths to your template directories
 TEMPLATE_DIRS = (
-    os.path.join(WEBAPP_ROOT, 'templates/'),
+    os.path.join(PROJECT_DIR, 'templates/'),
 )
 
 # Local time zone for this installation. Choices can be found here:
@@ -240,7 +240,6 @@ DEBUG_TOOLBAR_PANELS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',

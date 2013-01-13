@@ -34,6 +34,7 @@ This is the direct dependencies to use the project.
 * `Sveetchies-accounts`_;
 * `Sveetchies-documents`_;
 * `django-assets`_;
+* argparse (For production environment);
 
 Install
 =======

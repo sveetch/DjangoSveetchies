@@ -1,6 +1,8 @@
 #defaults
 *.pyc
 *.pyo
+*.min.css
+*.min.js
 
 #project
 _statics
