@@ -1,4 +1,4 @@
-{% load i18n autobreadcrumb documents_menus assets %}<!DOCTYPE html>
+{% load i18n autobreadcrumb documents_menus assets %}{% load url from future %}<!DOCTYPE html>
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>{% spaceless %}
@@ -9,13 +9,11 @@
     <meta name="author" content="Moi">
     <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico">
     
-    {% comment %}<link rel="stylesheet" href="{{ STATIC_URL }}css/screen{% if not debug %}.min{% endif %}.css">{% endcomment %}
     {% assets "main_css" %}
         <link rel="stylesheet" href="{{ ASSET_URL }}">
     {% endassets %}
     {% block head_more_links %}{% endblock %}
     {% block head_base_js %}
-        {% comment %}<script src="{{ STATIC_URL }}js/foundation/modernizr.foundation.js"></script>{% endcomment %}
         {% assets "modernizr_js", "main_js" %}
             <script type="text/javascript" src="{{ ASSET_URL }}"></script>
         {% endassets %}
@@ -32,7 +30,7 @@
         <section>
             <ul class="left" id="site-menu">
                 <li class="has-dropdown">
-                    <a href="{% url documents-index %}">Documents</a>
+                    <a href="{% url 'documents-index' %}">Documents</a>
                     {% document_page_treemenu 0 'sveedocuments/global_docs_treemenu.html' %}
                 </li>
             </ul>
@@ -44,18 +42,18 @@
                         <a href="#">{% blocktrans with username=user.username %}Connected as <strong>{{ username }}</strong>{% endblocktrans %}</a>
                         <ul class="dropdown">
                             {% if user.is_staff %}
-                                <li><a href="{% url admin:index %}">{% trans "Django admin" %}</a></li>
-                                <li{% currentwalkthroughto 'documents-board' %} class="active"{% endcurrentwalkthroughto %}><a href="{% url documents-board %}">{% trans "Document management" %}</a></li>
+                                <li><a href="{% url 'admin:index' %}">{% trans "Django admin" %}</a></li>
+                                <li{% currentwalkthroughto 'documents-board' %} class="active"{% endcurrentwalkthroughto %}><a href="{% url 'documents-board' %}">{% trans "Document management" %}</a></li>
                                 <li class="divider"></li>
                             {% endif %}
-                            <li><a href="{% url auth_logout %}">{% trans "Logout" %}</a></li>
+                            <li><a href="{% url 'auth_logout' %}">{% trans "Logout" %}</a></li>
                         </ul>
                     </li>
                 {% else %}
                     <li class="has-dropdown">
-                        <a href="{% url auth_login %}">{% trans "Login" %}</a>
+                        <a href="{% url 'auth_login' %}">{% trans "Login" %}</a>
                         <ul class="dropdown">
-                            <li><a href="{% url registration_register %}">{% trans "Register" %}</a></li>
+                            <li><a href="{% url 'registration_register' %}">{% trans "Register" %}</a></li>
                         </ul>
                     </li>
                 {% endif %}
@@ -66,7 +64,6 @@
     {% block body_content %}<div id="body_content">
         {% block breadcrumbsroot %}<ul class="breadcrumbs">{% block breadcrumbs %}{% autobreadcrumbs_tag %}{% endblock %}</ul>{% endblock %}
         
-        {% comment %}{% block context_menu %}{% endblock %}{% endcomment %}
         {% block content %}{% endblock %}
     </div>{% endblock %}
     

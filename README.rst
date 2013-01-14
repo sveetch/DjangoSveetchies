@@ -27,8 +27,7 @@ some `Django`_ apps I made while publishing their documentation.
 Requires
 ========
 
-This is the direct dependencies to use the project.
-
+* `Django`_ >= 1.4;
 * `autobreadcrumbs`_;
 * `djangocodemirror`_;
 * `Sveetchies-accounts`_;
@@ -56,7 +55,7 @@ those needed.
 By example, for a development environnment you will copy it to a ``dev_settings.py`` 
 file that you will use like this with *django-admin* : ::
 
-  django-admin YOURCOMMAND --settings=dev_settings
+    django-admin YOURCOMMAND --settings=dev_settings
 
 For a production environnment, you will create a ``prod_settings.py`` file where you 
 import the default settings and overwrite the required settings like this :
@@ -71,8 +70,10 @@ import the default settings and overwrite the required settings like this :
     """
     from settings import *
     
-    # WEBAPP_ROOT must be manually specified in production
-    WEBAPP_ROOT = "/home/django/projects/Sveetchies/demo/"
+    # Disable all debug mode
+    DEBUG = False
+    TEMPLATE_DEBUG = DEBUG
+    UNIFORM_FAIL_SILENTLY = not DEBUG
     
     # Database access
     DATABASES = {
@@ -98,28 +99,13 @@ import the default settings and overwrite the required settings like this :
         #('YourName', 'your@email'),
     #)
     
-    # Disable all debug mode
-    DEBUG = False
-    TEMPLATE_DEBUG = DEBUG
-    UNIFORM_FAIL_SILENTLY = not DEBUG
-    
     # Another site ID than default
-    SITE_ID = 1
-    
-    # Adapt for WEBAPP_ROOT and STATIC_DIRNAME changes
-    MEDIA_ROOT = os.path.join(WEBAPP_ROOT, MEDIA_DIRNAME)+"/"
+    #SITE_ID = 2
+
     STATIC_DIRNAME = '_statics'
+    STATIC_ROOT = os.path.join(PROJECT_DIR, STATIC_DIRNAME)
     STATIC_URL = '/{0}/'.format(STATIC_DIRNAME)
-    STATIC_ROOT = os.path.join(WEBAPP_ROOT, STATIC_DIRNAME)+"/"
-    STATICFILES_DIRS = (
-        os.path.join(WEBAPP_ROOT, 'webapp_statics/'),
-        os.path.join(SVEETCHIES_PATH_INSTALL, 'django/documents/static/'),
-    )
-    ADMIN_MEDIA_PREFIX = os.path.join('/', STATIC_DIRNAME, 'admin/')
-    TEMPLATE_DIRS = (
-        os.path.join(WEBAPP_ROOT, 'templates/'),
-        os.path.join(SVEETCHIES_PATH_INSTALL, 'django/documents/templates/documents/'),
-    )
+    ASSETS_ROOT = os.path.join(PROJECT_DIR, STATIC_DIRNAME)
     
     # Disable the DebugToolbar in production
     MIDDLEWARE_CLASSES = tuple([item for item in list(MIDDLEWARE_CLASSES) if item != 'debug_toolbar.middleware.DebugToolbarMiddleware'])
@@ -127,7 +113,8 @@ import the default settings and overwrite the required settings like this :
     
 Generally the settings you will need to edit will be :
 
-* ``WEBAPP_ROOT`` is the absolute path to the project, you must define it manually;
+* ``PROJECT_DIR`` is the absolute path to the project that is allready defined in the default 
+  settings file;
 * ``DATABASES`` if you use a different database than the default one (This example use 
   the Django database backend for PostgreSQL, for a different database type you should 
   see `Django database backends`_;
@@ -160,25 +147,29 @@ Synchronize data
 You will need to synchronize the database structure with the project's database models 
 with the following command line : ::
 
-  django-admin syncdb
+    django-admin syncdb
 
 The command will ask you if you want to create a superuser, do it only if you don't plan 
 to use the demonstration data.
 
 If you want to use the demonstration data, use the following command line : ::
 
-  django-admin loaddata demo_data.json
+    django-admin loaddata demo_data.json
 
 Deployment to production
 ************************
 
 You have to copy all the static files in your static directory to publish : ::
 
-  django-admin collectstatic --settings=prod_settings
+    django-admin collectstatic --settings=prod_settings
 
 For more details see documentation on `Django collectstatic`_.
 
-Then you will have to configure your webserver to serve the project, see the documentation on `Django deployment`_. 
+Then compute asset bundles : ::
+
+    django-admin assets build --settings=prod_settings
+
+And finally you will have to configure your webserver to serve the project, see the documentation on `Django deployment`_. 
 
 DjangoSveetchies is shipped with a ``dispatcher_sample.fcgi`` file, it is a dispatcher to use with FastCGI that is 
 probably the most easy to configure.

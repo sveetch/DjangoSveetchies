@@ -122,12 +122,13 @@ STATICFILES_DIRS = (
 
 ASSETS_ROOT = os.path.join(PROJECT_DIR, 'webapp_statics/')
 
-# URL prefix for admin media -- CSS, JavaScript and images.
-ADMIN_MEDIA_PREFIX = os.path.join('/', STATIC_DIRNAME, 'admin/')
-
 # Absolute paths to your template directories
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates/'),
+)
+
+LOCALE_PATHS = (
+    os.path.join(PROJECT_DIR, 'locale'),
 )
 
 # Local time zone for this installation. Choices can be found here:
@@ -264,9 +265,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # Uncomment the next line for simple clickjacking protection:
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'DjangoSveetchies.urls'
+
+# Python dotted path to the WSGI application used by Django's runserver.
+WSGI_APPLICATION = 'DjangoSveetchies.wsgi.application'
 
 INSTALLED_APPS = (
     'django_assets',
@@ -294,15 +300,21 @@ INSTALLED_APPS = (
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error.
+# the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
+            'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         }
     },
