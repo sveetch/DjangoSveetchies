@@ -78,6 +78,7 @@ PUBLISHED_APPS = (
     ('djangocodemirror', None, None, {'github':True, 'pypi':True, 'demo_link': ('djangocodemirror-sample-view', [])}),
     ('djangotribune', None, None, {'github':True, 'pypi':True, 'demo_link': ('tribune-board', [])}),
     ('DjangoSveetchies', None, None, {'github':True, 'doc_link': ('documents-page-details', ['djangosveetchies'])}),
+    ('crispy_forms_foundation', 'crispy-forms-foundation', None, {'github':True, 'pypi':True, 'doc_link': ('documents-page-details', ['crispy-forms-foundation']), 'demo_link': ('crispy-foundation-sample-view', []) }),
 )
 
 # The docutils writer to use, can be html4 or html5, html5 writer is internal code of 
@@ -264,7 +265,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    #'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -279,7 +280,7 @@ INSTALLED_APPS = (
     'captcha',
     'crispy_forms',
     'crispy_forms_foundation',
-    #'debug_toolbar',
+    'debug_toolbar',
     'mptt',
     'registration',
     'rstview',

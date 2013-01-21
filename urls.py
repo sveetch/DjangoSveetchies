@@ -26,6 +26,8 @@ urlpatterns = patterns('',
     
     (r'^djangocodemirror-sample/', include('djangocodemirror.urls')),
     
+    (r'^crispy-forms-foundation/', include('crispy_forms_foundation.urls')),
+    
     url(r'^tribune/', include('djangotribune.urls')),
     
     url(r'^documents-help/$', HelpPageView.as_view(), name='documents-help'),
