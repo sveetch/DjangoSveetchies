@@ -257,6 +257,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'DjangoSveetchies.utils.site_metas',
     'autobreadcrumbs.context_processors.AutoBreadcrumbsContext',
+    'sveedocuments.context_processors.SveedocumentsContext',
 )
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
