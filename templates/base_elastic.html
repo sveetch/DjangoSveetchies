@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load autobreadcrumb %}
+
+{% block header_topbar_attrs %}{% endblock %}
+{% block body_attrs %} class="columned"{% endblock %}
+
+{% block base_content %}
+<div class="row-fluid unpadded equal-columns">
+
+    <div class="columns three menu-part equal-item">{% block menu_content %}{% endblock %}</div>
+
+    <div class="columns nine content-part equal-item">
+        {% block breadcrumbs %}<ul class="breadcrumbs">{% block breadcrumbs_content %}{% autobreadcrumbs_tag %}{% endblock %}</ul>{% endblock %}
+        {% block content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

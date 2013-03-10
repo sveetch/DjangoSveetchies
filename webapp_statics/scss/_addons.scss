@@ -1,0 +1,37 @@
+//
+// Those little tricks..
+//
+
+// "Force clearfix" class
+.force-clearfix{
+    @include clearfix;
+}
+
+// Kind of an outer-row
+.row-fluid{
+    width: 100%;
+    max-width: 100%;
+    @extend %clearfix;
+    padding: 0 ($columnGutter/2);
+    
+    &.unpadded{
+        padding: 0;
+    }
+}
+        
+// Kind of an inner-row
+.row.content{
+    width: $rowWidth;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: ($columnGutter/2) 0;
+    
+    &.unpadded{
+        padding: 0;
+    }
+}
+
+// Unpadded columns for full space
+.columns.unpadded{
+    padding: 0;
+}

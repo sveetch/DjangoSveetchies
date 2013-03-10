@@ -1,4 +1,4 @@
-// You custom settings file to override Foundation defaults
+// Your custom settings file to override Foundation defaults
 @import "settings";
 
 // Comment out this import if you are customizing you imports below
@@ -45,62 +45,285 @@
 // @import "foundation/components/modules/orbit";
 // @import "foundation/components/modules/reveal";
 // @import "foundation/components/modules/offcanvas";
+// @import "foundation/components/modules/clearing";
+// @import "foundation/components/modules/joyride";
+
+// Media Queries Overrides
+@import "foundation/components/modules/mqueries";
 
 @import "font-awesome";
+@import "addons";
 
-// Just used to see the real values calculated by "modular-scale"
-#dummyms{
-    .cl0{
-        font-size: ms(0);
+html{
+    background-color: #1E1D1D;
+}
+
+body{
+    background-color: $white;
+}
+
+// *****
+// HEADER
+// *****
+#header-container{
+    padding: 0;
+    background-color: #9DCD78;
+    @include background-image(linear-gradient(#9DCD78, #9DCD78 98%, #99CB72));
+    border-bottom: 1px solid #639938;
+    
+    .top-bar{
+        background-color: transparent;
+        
+        // For the logo
+        #brand-container{
+            width: gridCalc(3, $totalColumns);
+            position: absolute;
+            top: 0;
+            left: 0;
+            .name{
+                width: 100%;
+                h1{
+                    a{
+                        display: block;
+                        margin-left: 0;
+                        padding-left: 0;
+                        padding-right: 0;
+                        overflow: hidden;
+                        font-family: 'Lobster', cursive, serif;
+                        text-align:center;
+                        @include text-shadow(rgba(black, 0.2) 1px 1px 0);
+                        background-color: #87C259;
+                        border-right: 1px solid #7EBD4C;
+                    }
+                }
+            }
+        }
+        
+        // Reset foundation top bar stuff
+        ul.global-menu, ul.account-menu{
+            line-height: $topBarLinkSize;
+            
+            li{
+                line-height: $topBarLinkSize;
+                a{
+                    line-height: $topBarLinkSize;
+                    height: auto;
+                }
+            }
+        }
+        
+        // The global navigation menu
+        ul.global-menu{
+            margin: 35px 0 0 0;
+            height: auto;
+            @include box-shadow(rgba(#305A13, 0.4) 0 0 3px);
+            
+            &>li{
+                &>a{
+                    color: #305A13;
+                    padding: 15px 13px;
+                    line-height: $topBarLinkSize;
+                    height: auto;
+                    background-color: #DEF4CF;
+                    @include text-shadow(rgba(white, 0.9) 1px 1px 1px);
+                    
+                    &:hover{
+                        background-color: #EBF9E2;
+                    }
+                }
+                
+                &:hover{
+                    background-color: transparent;
+                }
+                
+                &:first-child a{
+                    @include border-left-radius(5px);
+                }
+                &:last-child a{
+                    @include border-right-radius(5px);
+                }
+                
+                &.has-dropdown{
+                    a{
+                        padding-right: 28px;
+                        
+                        &:after {
+                            margin-right: 10px;
+                        }
+                    }
+                    &:first-child a{
+                        &:hover{
+                            @include border-bottom-left-radius(0);
+                        }
+                    }
+                    &:last-child a{
+                        &:hover{
+                            @include border-bottom-right-radius(0);
+                        }
+                    }
+                }
+            }
+            &>li + li{
+                border-left: 1px solid #C4ECA9;
+            }
+        }
+        
+        // Menu containing account link (login, register,etc..)
+        ul.account-menu{
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
     }
-    .cl1{
-        font-size: ms(1);
+    
+    // For fixed layouts (that should always use 'contain-to-grid')
+    &.contain-to-grid{
+        #brand-container{
+            width: auto;
+            position: static;
+            float: left;
+            .name h1{
+                a{
+                    width: auto;
+                    margin-left: 0;
+                    padding-right: 15px;
+                    background-color: transparent;
+                    border: 0;
+                }
+            }
+        }
     }
-    .cl2{
-        font-size: ms(2);
-    }
-    .cl3{
-        font-size: ms(3);
-    }
-    .cl4{
-        font-size: ms(4);
-    }
-    .cl5{
-        font-size: ms(5);
-    }
-    .cl6{
-        font-size: ms(6);
+    
+    // When the header is directly followed by an intro, we merge the intro within the header
+    &.with-intro{
+        border-bottom: 0;
+        background-image: none;
     }
 }
 
-/* Corps du contenu */
-#body_content{
-    padding-left: 1%;
-    padding-right: 1%;
+
+// *****
+// CONTENT
+// *****
+#content-container{
+    ul.breadcrumbs{
+        padding-bottom: 5px;
+        background-color: transparent;
+        border: 0;
+        
+        li:before { content: ">"; }
+        li:first-child:before { 
+            display: inline-block;
+            width: 1.75em;
+            text-align: left;
+            content: "\f0e8";
+            font-family: FontAwesome;
+            font-weight: normal;
+            font-style: normal;
+            text-decoration: inherit;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        a{
+            text-decoration: underline;
+        }
+    }
+    
+    // For a divised page in two part (menu at left, content at right)
+    .columns.menu-part{
+        padding: 0;
+        background-color: #f2f2f2;
+        border-right: 1px solid darken(#f2f2f2, 15%);
+        
+        // Copied accordion from F3 but without the "interactive" part
+        ul.accordion2{
+            margin: 0 0 22px 0;
+            border-bottom: 1px solid $secondaryColor;
+
+            &>li {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                border-top: 3px solid #87C259;
+
+                & > div.title {
+                    background: lighten($secondaryColor, 5%);
+                    padding: 15px;
+                    padding-top: 13px;
+                    margin: 0;
+                    position: relative;
+                    border-#{$defaultFloat}: 1px solid $secondaryColor;
+                    border-#{$defaultOpposite}: 1px solid $secondaryColor;
+                    background: $white;
+
+                    h1, h2, h3, h4, h5 { margin: 0; }
+                    h2{
+                        font-size: 20px;
+                        color: #87C259;
+                        text-shadow: 1px 1px 0 #FFFFFF;
+                    }
+                    &:after {
+                        @include cssTriangle(6px, darken($secondaryColor, 30%), top);
+                        position: absolute;
+                        #{$defaultOpposite}: 15px;
+                        top: 21px;
+                    }
+                }
+
+                .content {
+                    padding: 15px;
+                    background: $white;
+                    display: block;
+                    border-#{$defaultFloat}: 1px solid $secondaryColor;
+                    border-#{$defaultOpposite}: 1px solid $secondaryColor;
+                }
+            }
+        }
+        
+        &>ul{
+            list-style-type: none;
+            &>li{
+                position: relative;
+                a{
+                    display: block;
+                    width: 100%;
+                    border-right: 0;
+                }
+                &.active{
+                    &>a:after {
+                        position: absolute;
+                        top: 5px;
+                        right: -1px;
+                        @include cssTriangle(16px, #ffffff, right);
+                    }
+                }
+            }
+        }
+    }
+    .content-part{
+        padding-top: 10px;
+    }
+    
+    // Content introduction merged with the header
+    #content-intro{
+        background-color: #9DCD78;
+        @include background-image(linear-gradient(#9DCD78, #99CB72 98%, #639938));
+        padding: 25px 0;
+        
+        // Forcing font size and color within the intro block
+        div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,th,td {
+            font-size: 24px;
+            color: $white;
+            @include text-shadow(rgba(black, 0.2) 1px 1px 0);
+        }
+        a{
+            color: #305A13;
+        }
+    }
 }
 
-//*
-// Foundation base customizing
-//*
-
-// To force clearfix on some element without needing to include the mixin in the css but 
-// directly by adding the css class to the element
-.float-clearfix{
-    @include clearfix;
-}
-
-// TODO: this has to be setted in the settings
-.top-bar{
-    background-color:#000000;
-}
-
-// Row fluid block add-on, this is has to be used with "row" class, the row will adjust 
-// to the available width
-.row-fluid {
-    width: 100%;
-    max-width: 100%;
-    min-width: 100%;
-    @extend %clearfix;
+#djangocodemirror-sample{
+    width: auto !important;
 }
 
 // Styling the <select/> element like other <input/>
@@ -155,25 +378,26 @@ fieldset{
     }
 }
 
-//Fix needed for fullwidth layout else this provokes displaying horizontal scrollbar
-.top-bar ul.right .has-dropdown .dropdown {
-    //right: -1px;
-    right: 0;
-}
-
-//*
-// Other stuff
-//*
 table.full{
     width: 100%;
 }
 
-//*
-// Footer
-//*
-#footer{
-    margin-top: 20px;
-    color: #666666;
-    background-color: #000000;
-    text-align:center;
+// FOOTER
+#footer-container{
+    color: $white;
+    background-color: #272625;
+    
+    a{
+        color: #F55D2D;
+    }
+    
+    .links{
+        padding: 25px 10px;
+    }
+    
+    .mentions{
+        color: #a4a4a4;
+        padding: 25px 10px;
+        background-color: #1E1D1D;
+    }
 }

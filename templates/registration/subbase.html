@@ -1,0 +1,9 @@
+{% extends "base_fixed.html" %}
+{% load crispy_forms_tags autobreadcrumb %}
+
+{% block head_title %}{% current_title_from_breadcrumbs %}{% endblock %}
+
+{% block intro %}{% endblock %}
+{% block breadcrumbs_content %}{% autobreadcrumbs_tag %}{% endblock %}
+
+{% block content %}<h2>{% current_title_from_breadcrumbs %}</h2>{% endblock %}

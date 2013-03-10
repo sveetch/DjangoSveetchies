@@ -1,4 +1,4 @@
 {% extends "djangocodemirror/sample_base.html" %}
-{% load djangocodemirror_assets %}
+{% load djangocodemirror_assets autobreadcrumb %}
 
 {% block djangocodemirror_assets_loading %}{% djangocodemirror_get_bundles form.content %}{% endblock %}

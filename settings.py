@@ -18,7 +18,7 @@ from django.utils.translation import ugettext_lazy
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-#TEMPLATE_DEBUG = ASSETS_DEBUG = DEBUG
+TEMPLATE_DEBUG = ASSETS_DEBUG = DEBUG
 CRISPY_FAIL_SILENTLY = not DEBUG
 INTERNAL_IPS = ( '192.168.0.112', )
 
@@ -266,7 +266,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -281,7 +281,7 @@ INSTALLED_APPS = (
     'captcha',
     'crispy_forms',
     'crispy_forms_foundation',
-    'debug_toolbar',
+    #'debug_toolbar',
     'mptt',
     'registration',
     'rstview',

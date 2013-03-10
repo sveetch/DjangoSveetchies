@@ -1,0 +1,17 @@
+{% extends "base_fixed.html" %}
+{% load autobreadcrumb %}
+
+{% block head_title %}{% current_title_from_breadcrumbs %}{% endblock %}
+
+{% block head_more_links %}
+    {% include "sveedocuments/include_css.html" %}
+{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block intro %}{% endblock %}
+
+{% block content %}<h2>{% current_title_from_breadcrumbs %}</h2>
+<div class="restructuredtext_container">
+    {{ content|safe }}
+</div>{% endblock %}

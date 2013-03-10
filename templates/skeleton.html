@@ -1,0 +1,26 @@
+{% load i18n assets %}<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>{% spaceless %}
+    <meta charset="utf-8">
+    <title>{% block head_title %}{{ SITE.name }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block metas %}{% endblock %}
+    
+    {% block head_base_links %}{% endblock %}
+    
+    {% block head_more_links %}{% endblock %}
+    
+    {% block head_base_js %}{% endblock %}
+    {% endspaceless %}
+</head>
+
+<body{% block body_attrs %}{% endblock %}>
+    {% block body_content %}{% endblock %}
+    
+    {% spaceless %}{% block foot_base_js %}{% endblock %}
+    {% block head_more_js %}{% endblock %}{% endspaceless %}
+</body>
+</html>

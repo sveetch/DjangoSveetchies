@@ -1,0 +1,27 @@
+{% extends "base_fixed.html" %}
+{% load documents_markup documents_utils %}
+
+{% block head_title %}{{ page_instance.title }}{% endblock %}
+
+{% block head_more_links %}
+    {% include "sveedocuments/include_css.html" %}
+{% endblock %}
+
+{% block breadcrumbs_content %}{{ block.super }}
+{% for item in page_instance.get_ancestors %}
+    <li><a href="{% url documents-page-details item.slug %}">{{ item.title }}</a></li>
+{% endfor %}
+    <li><a href="{% url documents-page-details page_instance.slug %}">{{ page_instance.title }}</a></li>
+{% endblock %}
+
+{% block body_id %}doc-id-{{ page_instance.id }}{% endblock %}
+
+{% block content %}<div class="row row-fluid{% if page_instance.level == 0 %} doc_root_page{% endif %}">
+    {% include "sveedocuments/page_details/include_action_menu.html" %}
+    {% document_context page_instance %}
+    <h2>{{ page_instance.title }}</h2>
+
+    <div class="restructuredtext_container">
+        {{ page_instance|document_render }}
+    </div>
+</div>{% endblock %}

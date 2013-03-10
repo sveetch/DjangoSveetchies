@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load autobreadcrumb %}
+
+{% block base_content %}
+{% block intro %}{% endblock %}
+<div class="row"><div class="twelve columns unpadded">
+    {% block breadcrumbs %}<ul class="breadcrumbs">{% block breadcrumbs_content %}{% autobreadcrumbs_tag %}{% endblock %}</ul>{% endblock %}
+    {% block content_part %}{% block content %}{% endblock %}{% endblock %}
+</div></div>
+{% endblock %}
